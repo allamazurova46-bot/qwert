@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Я вас люблю 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ffe6f0, #e6f7ff);
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 60px;
+      font-size: 40px;
+      color: #ff4d6d;
+    }
+
+    p {
+      font-size: 22px;
+      color: #333;
+    }
+
+    button {
+      padding: 12px 20px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      background: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    .heart {
+      position: absolute;
+      color: red;
+      font-size: 20px;
+      animation: fall 5s linear infinite;
+    }
+
+    .flower {
+      position: absolute;
+      font-size: 25px;
+      animation: fall 6s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10%); opacity: 1; }
+      100% { transform: translateY(110vh); opacity: 0; }
+    }
+
+    #message {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #444;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>💖 Я вас очень люблю 💖</h1>
+  <p>Этот сайт для самых дорогих людей</p>
+
+  <button onclick="showMessage()">Нажми меня</button>
+  <button onclick="moreHearts()">Больше сердечек</button>
+  <button onclick="moreFlowers()">Больше цветов</button>
+
+  <div id="message"></div>
+
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+
+    function createFlower() {
+      const flower = document.createElement("div");
+      flower.className = "flower";
+      const flowers = ["🌸", "🌷", "💐", "🌺", "🌻"];
+      flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+      flower.style.left = Math.random() * 100 + "vw";
+      flower.style.fontSize = (Math.random() * 25 + 15) + "px";
+      document.body.appendChild(flower);
+
+      setTimeout(() => {
+        flower.remove();
+      }, 6000);
+    }
+
+    function showMessage() {
+      document.getElementById("message").innerHTML =
+        "💖 Вы самые лучшие! Спасибо за всё 💖";
+    }
+
+    function moreHearts() {
+      for (let i = 0; i < 10; i++) {
+        setTimeout(createHeart, i * 100);
+      }
+    }
+
+    function moreFlowers() {
+      for (let i = 0; i < 10; i++) {
+        setTimeout(createFlower, i * 150);
+      }
+    }
+
+    // автоматические сердечки
+    setInterval(createHeart, 500);
+  </script>
+
+</body>
+</html>
